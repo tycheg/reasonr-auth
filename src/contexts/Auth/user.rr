@@ -1,0 +1,29 @@
+# auth/contexts/Auth/user.rr
+
+role authAdmin
+
+## A Keycloak user: the id is the token subject. A project bounded context
+## translates it into its own actor through an ACL: actor Auth.User as Customer.
+actor User
+  id uuid
+  name string?
+
+  ## The user name from the Keycloak profile, after sign-in
+  command(self) Sync(userName string)
+    synced(userName: userName)
+
+  event synced(userName string)
+    name = userName
+
+  error notSynced
+
+  ## My account
+  query(User) Me() Account
+    let u = [me]
+    if u is none
+      notSynced()
+      return
+    return Account(name: u.name)
+
+value Account
+  name string?

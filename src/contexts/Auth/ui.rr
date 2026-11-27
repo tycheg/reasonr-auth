@@ -1,0 +1,6 @@
+# auth/contexts/Auth/ui.rr
+
+screen MyAccount "Account"
+  Card User.Me
+    Actions
+      Edit User.Sync "Update name"

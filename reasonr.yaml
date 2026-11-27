@@ -1,0 +1,5 @@
+# A ReasonR module: authentication through Keycloak. Bounded context Auth is
+# the Keycloak user and their account; the engine checks Keycloak tokens with
+# its built-in jwt authentication (README).
+module: github.com/tycheg/reasonr-auth
+src: src

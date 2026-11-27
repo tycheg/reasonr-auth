@@ -1,0 +1,8 @@
+# auth/contexts/Auth/user.test.rr
+
+test "A user updates their name"
+  let u1 = new User.Id
+  when
+    [u1].Sync(userName: "Anna") as u1
+  then
+    User.Me() as u1 matches (name: "Anna")

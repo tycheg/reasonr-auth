@@ -1,0 +1,6 @@
+# auth/apps/Account/app.rr
+
+app(User) Account "Account"
+  language en
+  Menu
+    MyAccount
